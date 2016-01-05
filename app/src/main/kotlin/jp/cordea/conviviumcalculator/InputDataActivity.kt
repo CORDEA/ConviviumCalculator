@@ -24,20 +24,25 @@ class InputDataActivity : AppCompatActivity() {
         editText.text = SpannableStringBuilder(objToString())
         fab.setOnClickListener {
             val text = editText.text.toString()
-            val realm = Realm.getInstance(this)
-            realm.beginTransaction()
-            realm.allObjects(ListItem::class.java).clear()
-            if (!text.isEmpty()) {
-                for (arr in stringToObj(text)) {
-                    var item = realm.createObject(ListItem::class.java)
-                    item.name = arr[0]
-                    item.price = arr[1].toInt()
-                    item.switch = if (arr.size > 2) arr[2].toBoolean() else false
+            Realm.getInstance(this).let {
+                it.beginTransaction()
+                it.allObjects(ListItem::class.java).clear()
+                if (!text.isEmpty()) {
+                    for (arr in stringToObj(text)) {
+                        if (arr.size < 2) {
+                            continue
+                        }
+                        var item = it.createObject(ListItem::class.java)
+
+                        item.name = arr[0]
+                        item.price = arr[1].toInt()
+                        item.switch = if (arr.size > 2) arr[2].toBoolean() else false
+                    }
                 }
+                it.commitTransaction()
+                it.close()
+                finish()
             }
-            realm.commitTransaction()
-            realm.close()
-            finish()
         }
     }
 
@@ -46,7 +51,6 @@ class InputDataActivity : AppCompatActivity() {
                 .just(csv)
                 .flatMap { Observable.from(it.split('\n')) }
                 .map { it.split(',').toTypedArray() }
-                .onErrorReturn { null }
                 .toList()
                 .toBlocking()
                 .first()
@@ -54,13 +58,14 @@ class InputDataActivity : AppCompatActivity() {
     }
 
     private fun objToString(): String {
-        val realm = Realm.getInstance(this)
-        return Observable
-                .from(realm.allObjects(ListItem::class.java))
-                .map { "%s,%d,%s".format(it.name, it.price, it.switch.toString()) }
-                .toList()
-                .toBlocking()
-                .first()
-                .joinToString("\n")
+        Realm.getInstance(this).let {
+            return Observable
+                    .from(it.allObjects(ListItem::class.java))
+                    .map { "%s,%d,%s".format(it.name, it.price, it.switch.toString()) }
+                    .toList()
+                    .toBlocking()
+                    .first()
+                    .joinToString("\n")
+        }
     }
 }

@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ListView
 import butterknife.bindView
+import com.pawegio.kandroid.alert
 import com.pawegio.kandroid.startActivity
 import io.realm.Realm
 
@@ -15,7 +16,9 @@ class MainActivity : AppCompatActivity() {
 
     val toolbar: Toolbar by bindView(R.id.toolbar)
     val listView: ListView by bindView(R.id.listview)
+
     val fab: FloatingActionButton by bindView(R.id.fab)
+    val sumFab: FloatingActionButton by bindView(R.id.sum_fab)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,34 +30,45 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener {
             startActivity<InputDataActivity>()
         }
+        sumFab.setOnClickListener {
+            val res = calc()
+            alert {
+                title(R.string.dialog_title)
+                message("all: %d\nrecovered: %d".format(res[0], res[1]))
+            }.show()
+        }
+    }
+
+    private fun calc(): IntArray {
+        Realm.getInstance(this).let {
+            val items = it.allObjects(ListItem::class.java)
+            var all = 0
+            var recovered = 0
+            for (item in items) {
+                all += item.price
+                recovered += if (item.switch) item.price else 0
+            }
+            return intArrayOf(all, recovered)
+        }
     }
 
     override fun onStart() {
         super.onStart()
-        val realm = Realm.getInstance(this)
-        val items = realm.allObjects(ListItem::class.java).toTypedArray()
-
-        (listView.adapter as ListAdapter).items = items
-        (listView.adapter as ListAdapter).notifyDataSetChanged()
+        Realm.getInstance(this).let {
+            val items = it.allObjects(ListItem::class.java).toTypedArray()
+            listView.adapter?.let{
+                val i = it as ListAdapter
+                i.items = items
+                i.notifyDataSetChanged()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
+        return false
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true
-        }
-
         return super.onOptionsItemSelected(item)
     }
 }

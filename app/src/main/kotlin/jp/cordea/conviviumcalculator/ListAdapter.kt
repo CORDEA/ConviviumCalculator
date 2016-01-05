@@ -38,11 +38,10 @@ class ListAdapter(context : Context) : ArrayAdapter<ListItem>(context, R.layout.
 
         switch.setOnCheckedChangeListener { compoundButton, b ->
             val realm = Realm.getInstance(context)
-            val it = realm.where(ListItem::class.java).equalTo("name", items[position].name).findFirst()
-            realm.beginTransaction()
-            it.switch = b
-            realm.commitTransaction()
-            realm.close()
+            val model = realm.where(ListItem::class.java).equalTo("name", items[position].name).findFirst()
+            realm.use {
+                model.switch = b
+            }
         }
         return view;
     }
