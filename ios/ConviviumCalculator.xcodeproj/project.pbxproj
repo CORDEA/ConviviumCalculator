@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3959B3E00E6359676D66EC65 /* Pods_ConviviumCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 470AFE9BB1B5221786E13451 /* Pods_ConviviumCalculator.framework */; };
+		5FCAEAA41C3A35450069D566 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEAA31C3A35450069D566 /* AppDelegate.swift */; };
+		5FCAEAA61C3A35450069D566 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEAA51C3A35450069D566 /* ViewController.swift */; };
+		5FCAEAA91C3A35450069D566 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FCAEAA71C3A35450069D566 /* Main.storyboard */; };
+		5FCAEAAB1C3A35450069D566 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FCAEAAA1C3A35450069D566 /* Assets.xcassets */; };
+		5FCAEAAE1C3A35450069D566 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FCAEAAC1C3A35450069D566 /* LaunchScreen.storyboard */; };
+		5FCAEAB91C3A35450069D566 /* ConviviumCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEAB81C3A35450069D566 /* ConviviumCalculatorTests.swift */; };
+		5FCAEAC41C3A35450069D566 /* ConviviumCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEAC31C3A35450069D566 /* ConviviumCalculatorUITests.swift */; };
+		5FCAEAD41C3A3B350069D566 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEAD31C3A3B350069D566 /* ListItem.swift */; };
+		5FCAEAD61C3A3CA70069D566 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEAD51C3A3CA70069D566 /* TableViewCell.swift */; };
+		5FCAEADA1C3A42410069D566 /* InputDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEAD91C3A42410069D566 /* InputDataViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5FCAEAB51C3A35450069D566 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FCAEA981C3A35450069D566 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FCAEA9F1C3A35450069D566;
+			remoteInfo = ConviviumCalculator;
+		};
+		5FCAEAC01C3A35450069D566 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FCAEA981C3A35450069D566 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FCAEA9F1C3A35450069D566;
+			remoteInfo = ConviviumCalculator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		470AFE9BB1B5221786E13451 /* Pods_ConviviumCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConviviumCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A7F809B852ECEB6A5D3A22D /* Pods-ConviviumCalculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConviviumCalculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConviviumCalculator/Pods-ConviviumCalculator.debug.xcconfig"; sourceTree = "<group>"; };
+		53220A0FAE30FAA74E15AFBC /* Pods-ConviviumCalculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConviviumCalculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConviviumCalculator/Pods-ConviviumCalculator.release.xcconfig"; sourceTree = "<group>"; };
+		5FCAEAA01C3A35450069D566 /* ConviviumCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConviviumCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FCAEAA31C3A35450069D566 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5FCAEAA51C3A35450069D566 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5FCAEAA81C3A35450069D566 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5FCAEAAA1C3A35450069D566 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5FCAEAAD1C3A35450069D566 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5FCAEAAF1C3A35450069D566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FCAEAB41C3A35450069D566 /* ConviviumCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConviviumCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FCAEAB81C3A35450069D566 /* ConviviumCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConviviumCalculatorTests.swift; sourceTree = "<group>"; };
+		5FCAEABA1C3A35450069D566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FCAEABF1C3A35450069D566 /* ConviviumCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConviviumCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FCAEAC31C3A35450069D566 /* ConviviumCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConviviumCalculatorUITests.swift; sourceTree = "<group>"; };
+		5FCAEAC51C3A35450069D566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FCAEAD31C3A3B350069D566 /* ListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
+		5FCAEAD51C3A3CA70069D566 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		5FCAEAD91C3A42410069D566 /* InputDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputDataViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5FCAEA9D1C3A35450069D566 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3959B3E00E6359676D66EC65 /* Pods_ConviviumCalculator.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FCAEAB11C3A35450069D566 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FCAEABC1C3A35450069D566 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5854A5CDF46ACF06276203A7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4A7F809B852ECEB6A5D3A22D /* Pods-ConviviumCalculator.debug.xcconfig */,
+				53220A0FAE30FAA74E15AFBC /* Pods-ConviviumCalculator.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5FCAEA971C3A35450069D566 = {
+			isa = PBXGroup;
+			children = (
+				5FCAEAA21C3A35450069D566 /* ConviviumCalculator */,
+				5FCAEAB71C3A35450069D566 /* ConviviumCalculatorTests */,
+				5FCAEAC21C3A35450069D566 /* ConviviumCalculatorUITests */,
+				5FCAEAA11C3A35450069D566 /* Products */,
+				5854A5CDF46ACF06276203A7 /* Pods */,
+				9DB9C6B635FC461FB74C5E24 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5FCAEAA11C3A35450069D566 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5FCAEAA01C3A35450069D566 /* ConviviumCalculator.app */,
+				5FCAEAB41C3A35450069D566 /* ConviviumCalculatorTests.xctest */,
+				5FCAEABF1C3A35450069D566 /* ConviviumCalculatorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5FCAEAA21C3A35450069D566 /* ConviviumCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				5FCAEAA31C3A35450069D566 /* AppDelegate.swift */,
+				5FCAEAA51C3A35450069D566 /* ViewController.swift */,
+				5FCAEAA71C3A35450069D566 /* Main.storyboard */,
+				5FCAEAAA1C3A35450069D566 /* Assets.xcassets */,
+				5FCAEAAC1C3A35450069D566 /* LaunchScreen.storyboard */,
+				5FCAEAAF1C3A35450069D566 /* Info.plist */,
+				5FCAEAD31C3A3B350069D566 /* ListItem.swift */,
+				5FCAEAD51C3A3CA70069D566 /* TableViewCell.swift */,
+				5FCAEAD91C3A42410069D566 /* InputDataViewController.swift */,
+			);
+			path = ConviviumCalculator;
+			sourceTree = "<group>";
+		};
+		5FCAEAB71C3A35450069D566 /* ConviviumCalculatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				5FCAEAB81C3A35450069D566 /* ConviviumCalculatorTests.swift */,
+				5FCAEABA1C3A35450069D566 /* Info.plist */,
+			);
+			path = ConviviumCalculatorTests;
+			sourceTree = "<group>";
+		};
+		5FCAEAC21C3A35450069D566 /* ConviviumCalculatorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5FCAEAC31C3A35450069D566 /* ConviviumCalculatorUITests.swift */,
+				5FCAEAC51C3A35450069D566 /* Info.plist */,
+			);
+			path = ConviviumCalculatorUITests;
+			sourceTree = "<group>";
+		};
+		9DB9C6B635FC461FB74C5E24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				470AFE9BB1B5221786E13451 /* Pods_ConviviumCalculator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5FCAEA9F1C3A35450069D566 /* ConviviumCalculator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FCAEAC81C3A35450069D566 /* Build configuration list for PBXNativeTarget "ConviviumCalculator" */;
+			buildPhases = (
+				ED0B684AF3B35DBC5C3637A7 /* Check Pods Manifest.lock */,
+				5FCAEA9C1C3A35450069D566 /* Sources */,
+				5FCAEA9D1C3A35450069D566 /* Frameworks */,
+				5FCAEA9E1C3A35450069D566 /* Resources */,
+				9CEF591BC7A03D31E0D0818B /* Embed Pods Frameworks */,
+				FA14F0FEC223C7A4F311497B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ConviviumCalculator;
+			productName = ConviviumCalculator;
+			productReference = 5FCAEAA01C3A35450069D566 /* ConviviumCalculator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5FCAEAB31C3A35450069D566 /* ConviviumCalculatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FCAEACB1C3A35450069D566 /* Build configuration list for PBXNativeTarget "ConviviumCalculatorTests" */;
+			buildPhases = (
+				5FCAEAB01C3A35450069D566 /* Sources */,
+				5FCAEAB11C3A35450069D566 /* Frameworks */,
+				5FCAEAB21C3A35450069D566 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5FCAEAB61C3A35450069D566 /* PBXTargetDependency */,
+			);
+			name = ConviviumCalculatorTests;
+			productName = ConviviumCalculatorTests;
+			productReference = 5FCAEAB41C3A35450069D566 /* ConviviumCalculatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5FCAEABE1C3A35450069D566 /* ConviviumCalculatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FCAEACE1C3A35450069D566 /* Build configuration list for PBXNativeTarget "ConviviumCalculatorUITests" */;
+			buildPhases = (
+				5FCAEABB1C3A35450069D566 /* Sources */,
+				5FCAEABC1C3A35450069D566 /* Frameworks */,
+				5FCAEABD1C3A35450069D566 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5FCAEAC11C3A35450069D566 /* PBXTargetDependency */,
+			);
+			name = ConviviumCalculatorUITests;
+			productName = ConviviumCalculatorUITests;
+			productReference = 5FCAEABF1C3A35450069D566 /* ConviviumCalculatorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5FCAEA981C3A35450069D566 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				TargetAttributes = {
+					5FCAEA9F1C3A35450069D566 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					5FCAEAB31C3A35450069D566 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 5FCAEA9F1C3A35450069D566;
+					};
+					5FCAEABE1C3A35450069D566 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 5FCAEA9F1C3A35450069D566;
+					};
+				};
+			};
+			buildConfigurationList = 5FCAEA9B1C3A35450069D566 /* Build configuration list for PBXProject "ConviviumCalculator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5FCAEA971C3A35450069D566;
+			productRefGroup = 5FCAEAA11C3A35450069D566 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5FCAEA9F1C3A35450069D566 /* ConviviumCalculator */,
+				5FCAEAB31C3A35450069D566 /* ConviviumCalculatorTests */,
+				5FCAEABE1C3A35450069D566 /* ConviviumCalculatorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5FCAEA9E1C3A35450069D566 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FCAEAAE1C3A35450069D566 /* LaunchScreen.storyboard in Resources */,
+				5FCAEAAB1C3A35450069D566 /* Assets.xcassets in Resources */,
+				5FCAEAA91C3A35450069D566 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FCAEAB21C3A35450069D566 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FCAEABD1C3A35450069D566 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9CEF591BC7A03D31E0D0818B /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ConviviumCalculator/Pods-ConviviumCalculator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED0B684AF3B35DBC5C3637A7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA14F0FEC223C7A4F311497B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ConviviumCalculator/Pods-ConviviumCalculator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5FCAEA9C1C3A35450069D566 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FCAEAD41C3A3B350069D566 /* ListItem.swift in Sources */,
+				5FCAEAD61C3A3CA70069D566 /* TableViewCell.swift in Sources */,
+				5FCAEAA61C3A35450069D566 /* ViewController.swift in Sources */,
+				5FCAEAA41C3A35450069D566 /* AppDelegate.swift in Sources */,
+				5FCAEADA1C3A42410069D566 /* InputDataViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FCAEAB01C3A35450069D566 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FCAEAB91C3A35450069D566 /* ConviviumCalculatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FCAEABB1C3A35450069D566 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FCAEAC41C3A35450069D566 /* ConviviumCalculatorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5FCAEAB61C3A35450069D566 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5FCAEA9F1C3A35450069D566 /* ConviviumCalculator */;
+			targetProxy = 5FCAEAB51C3A35450069D566 /* PBXContainerItemProxy */;
+		};
+		5FCAEAC11C3A35450069D566 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5FCAEA9F1C3A35450069D566 /* ConviviumCalculator */;
+			targetProxy = 5FCAEAC01C3A35450069D566 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5FCAEAA71C3A35450069D566 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FCAEAA81C3A35450069D566 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5FCAEAAC1C3A35450069D566 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FCAEAAD1C3A35450069D566 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5FCAEAC61C3A35450069D566 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5FCAEAC71C3A35450069D566 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5FCAEAC91C3A35450069D566 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A7F809B852ECEB6A5D3A22D /* Pods-ConviviumCalculator.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ConviviumCalculator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.cordea.ConviviumCalculator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5FCAEACA1C3A35450069D566 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53220A0FAE30FAA74E15AFBC /* Pods-ConviviumCalculator.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ConviviumCalculator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.cordea.ConviviumCalculator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5FCAEACC1C3A35450069D566 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ConviviumCalculatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.cordea.ConviviumCalculatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConviviumCalculator.app/ConviviumCalculator";
+			};
+			name = Debug;
+		};
+		5FCAEACD1C3A35450069D566 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ConviviumCalculatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.cordea.ConviviumCalculatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConviviumCalculator.app/ConviviumCalculator";
+			};
+			name = Release;
+		};
+		5FCAEACF1C3A35450069D566 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ConviviumCalculatorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.cordea.ConviviumCalculatorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ConviviumCalculator;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		5FCAEAD01C3A35450069D566 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ConviviumCalculatorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.cordea.ConviviumCalculatorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ConviviumCalculator;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5FCAEA9B1C3A35450069D566 /* Build configuration list for PBXProject "ConviviumCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FCAEAC61C3A35450069D566 /* Debug */,
+				5FCAEAC71C3A35450069D566 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FCAEAC81C3A35450069D566 /* Build configuration list for PBXNativeTarget "ConviviumCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FCAEAC91C3A35450069D566 /* Debug */,
+				5FCAEACA1C3A35450069D566 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FCAEACB1C3A35450069D566 /* Build configuration list for PBXNativeTarget "ConviviumCalculatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FCAEACC1C3A35450069D566 /* Debug */,
+				5FCAEACD1C3A35450069D566 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FCAEACE1C3A35450069D566 /* Build configuration list for PBXNativeTarget "ConviviumCalculatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FCAEACF1C3A35450069D566 /* Debug */,
+				5FCAEAD01C3A35450069D566 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5FCAEA981C3A35450069D566 /* Project object */;
+}
