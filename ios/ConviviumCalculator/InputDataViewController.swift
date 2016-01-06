@@ -77,7 +77,7 @@ class InputDataViewController: UIViewController {
                     .toObservable()
                     .map { it -> String in
                         if let name = it.name {
-                            return name + "," + String(it.price) + "," + String(it.isSwitch)
+                            return String(format: "%@,%d,%@", name, it.price, String(it.isSwitch))
                         }
                         return ""
                     }

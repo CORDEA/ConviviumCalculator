@@ -27,7 +27,7 @@ class TableViewCell: UITableViewCell {
         }
         
         if let text = nameLabel.text {
-            guard let item = realm.objects(ListItem).filter("name = '" + text + "'").first else {
+            guard let item = realm.objects(ListItem).filter("name = '%@'", text).first else {
                 return
             }
             _ = try? realm.write({

@@ -40,8 +40,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func onSumPressed(sender: UIBarButtonItem) {
-        let c = calc()
-        let message = "all: ¥ " + c[0] + "\nrecovered: ¥ " + c[1]
+        let message = String(format: "all: ¥ %@\nrecovered: ¥ %@", arguments: calc())
         let ac = UIAlertController(
             title: "Summary",
             message: message,
@@ -66,7 +65,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return fmt
     }
     
-    private func calc() -> [String] {
+    private func calc() -> [CVarArgType] {
         let fmt = getNumberFormatter()
         if let realm = try? Realm() {
             items = realm.objects(ListItem)
@@ -76,8 +75,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 all += li.price
                 recovered += li.isSwitch ? li.price : 0
             }
-            if let all = fmt.stringFromNumber(all),
-                recovered = fmt.stringFromNumber(recovered) {
+            if let all = fmt.stringFromNumber(all), recovered = fmt.stringFromNumber(recovered) {
                 return [all, recovered]
             }
         }
@@ -91,7 +89,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             .stringFromNumber(items[indexPath.row].price) {
                 cell.nameLabel.text = items[indexPath.row].name
                 
-                cell.priceLabel.text = "¥ " + num
+                cell.priceLabel.text = String(format: "¥ %@", num)
                 cell.priceSwitch.setOn(items[indexPath.row].isSwitch, animated: false)
         }
         
