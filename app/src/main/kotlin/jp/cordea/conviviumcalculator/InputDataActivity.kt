@@ -9,6 +9,7 @@ import android.widget.EditText
 import butterknife.bindView
 import io.realm.Realm
 import rx.Observable
+import rx.subscriptions.CompositeSubscription
 
 class InputDataActivity : AppCompatActivity() {
 
@@ -24,37 +25,43 @@ class InputDataActivity : AppCompatActivity() {
         editText.text = SpannableStringBuilder(objToString())
         fab.setOnClickListener {
             val text = editText.text.toString()
-            Realm.getInstance(this).let {
-                it.beginTransaction()
-                it.allObjects(ListItem::class.java).clear()
-                if (!text.isEmpty()) {
-                    for (arr in stringToObj(text)) {
-                        if (arr.size < 2) {
-                            continue
-                        }
-                        var item = it.createObject(ListItem::class.java)
-
-                        item.name = arr[0]
-                        item.price = arr[1].toInt()
-                        item.switch = if (arr.size > 2) arr[2].toBoolean() else false
-                    }
-                }
-                it.commitTransaction()
-                it.close()
-                finish()
-            }
+            stringToObj(text)
         }
     }
 
-    private fun stringToObj(csv: String): Array<Array<String>> {
-        return Observable
-                .just(csv)
-                .flatMap { Observable.from(it.split('\n')) }
-                .map { it.split(',').toTypedArray() }
-                .toList()
-                .toBlocking()
-                .first()
-                .toTypedArray();
+    override fun onPause() {
+        super.onPause()
+        if (!compositeSubscription.isUnsubscribed) {
+            compositeSubscription.unsubscribe()
+        }
+    }
+
+    private val compositeSubscription = CompositeSubscription()
+
+    private fun stringToObj(csv: String) {
+        val realm = Realm.getInstance(this)
+        realm.beginTransaction()
+        realm.allObjects(ListItem::class.java).clear()
+        compositeSubscription.add(
+                Observable
+                        .just(csv)
+                        .flatMap { Observable.from(it.split('\n')) }
+                        .map { it.split(',').toTypedArray() }
+                        .filter { it.size > 1 }
+                        .map {
+                            val item = realm.createObject(ListItem::class.java)
+                            item.name = it[0]
+                            item.price = it[1].toInt()
+                            item.switch = if (it.size > 2) it[2].toBoolean() else false
+                        }
+                        .doOnCompleted {
+                            realm.commitTransaction()
+                            realm.close()
+                            finish()
+                        }
+                        .doOnError { finish() }
+                        .subscribe()
+        )
     }
 
     private fun objToString(): String {
