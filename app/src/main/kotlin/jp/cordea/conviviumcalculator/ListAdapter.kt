@@ -25,14 +25,14 @@ class ListAdapter(context : Context) : ArrayAdapter<ListItem>(context, R.layout.
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
-        val view = convertView ?: context.inflateLayout(R.layout.list_item)
+        val view = convertView ?: context.inflateLayout(R.layout.list_item, parent)
 
         val item = getItem(position);
         item ?: return convertView;
         var textView = view.find<TextView>(R.id.name)
         textView.text = item.name
         textView = view.find<TextView>(R.id.price)
-        textView.text = item.price.toString()
+        textView.text = "¥ %,d".format(item.price)
         val switch: Switch = view.find<Switch>(R.id.item_switch)
         switch.isChecked = item.switch
 

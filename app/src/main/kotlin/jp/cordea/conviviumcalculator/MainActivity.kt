@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             val res = calc()
             alert {
                 title(R.string.dialog_title)
-                message("all: %d\nrecovered: %d".format(res[0], res[1]))
+                message("all: ¥ %,d\nrecovered: ¥ %,d".format(res[0], res[1]))
             }.show()
         }
     }

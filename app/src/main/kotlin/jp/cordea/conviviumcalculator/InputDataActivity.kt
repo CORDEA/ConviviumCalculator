@@ -13,14 +13,15 @@ import rx.subscriptions.CompositeSubscription
 
 class InputDataActivity : AppCompatActivity() {
 
+    private val toolbar: Toolbar by bindView(R.id.toolbar)
     private val editText: EditText by bindView(R.id.edittext)
     private val fab: FloatingActionButton by bindView(R.id.fab)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_input_data)
-        val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
+        toolbar.title = resources.getString(R.string.input_data_title)
 
         editText.text = SpannableStringBuilder(objToString())
         fab.setOnClickListener {
