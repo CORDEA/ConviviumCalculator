@@ -13,12 +13,14 @@ open Android.Runtime
 open Android.Views
 open Android.Widget
 open Android.Util
+open Android.Support.V7.Widget
+open Android.Support.V7.App
 
 open Mono.Data.Sqlite
 
-[<Activity (Label = "InputData")>]
+[<Activity (Label = "InputData", Theme = "@style/AppTheme.NoActionBar")>]
 type InputDataActivity() =
-  inherit Activity()
+  inherit AppCompatActivity()
   
   [<DefaultValue>] val mutable editText: EditText
   [<DefaultValue>] val mutable dbcon: SqliteConnection
@@ -45,7 +47,10 @@ type InputDataActivity() =
   override me.OnCreate(bundle) =
     base.OnCreate (bundle)
     me.SetContentView (Resource_Layout.InputData)
-    
+     
+    let toolbar = me.FindViewById<Toolbar>(Resource_Id.toolbar)
+    me.SetSupportActionBar toolbar
+       
     me.editText <- me.FindViewById<EditText> Resource_Id.edit_text
 
     me.dbcon <- new SqliteConnection(Constraints.General.connectionString)

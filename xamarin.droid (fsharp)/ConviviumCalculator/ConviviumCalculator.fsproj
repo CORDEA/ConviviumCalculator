@@ -25,18 +25,21 @@
     <ErrorReport>prompt</ErrorReport>
     <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
-    <PlatformTarget></PlatformTarget>
+    <PlatformTarget>
+    </PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <GenerateTailCalls>true</GenerateTailCalls>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <ConsolePause>false</ConsolePause>
-    <PlatformTarget></PlatformTarget>
+    <PlatformTarget>
+    </PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -54,6 +57,18 @@
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Data" />
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\packages\Xamarin.Android.Support.v4.23.1.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.23.1.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.RecyclerView.23.1.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Design">
+      <HintPath>..\packages\Xamarin.Android.Support.Design.23.1.1.0\lib\MonoAndroid403\Xamarin.Android.Support.Design.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.fs" />
@@ -81,6 +96,23 @@
     <AndroidResource Include="Resources\layout\ListItem.axml" />
     <AndroidResource Include="Resources\layout\InputData.axml" />
     <AndroidResource Include="Resources\values\Dimens.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_content_paste_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_done_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_info_outline_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_content_paste_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_done_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_info_outline_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_content_paste_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_done_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_info_outline_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_content_paste_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_done_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_info_outline_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_content_paste_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_done_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_info_outline_white_24dp.png" />
+    <AndroidResource Include="Resources\values\Colors.xml" />
+    <AndroidResource Include="Resources\values\Styles.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />

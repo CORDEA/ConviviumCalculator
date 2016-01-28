@@ -8,12 +8,15 @@ open Android.OS
 open Android.Runtime
 open Android.Views
 open Android.Widget
+open Android.Support.Design.Widget
+open Android.Support.V7.Widget
+open Android.Support.V7.App
 
 open Mono.Data.Sqlite
 
-[<Activity (Label = "ConviviumCalculator", MainLauncher = true, Icon = "@mipmap/icon")>]
+[<Activity (Label = "ConviviumCalculator", MainLauncher = true, Icon = "@mipmap/icon", Theme = "@style/AppTheme.NoActionBar")>]
 type MainActivity () =
-    inherit Activity ()
+    inherit AppCompatActivity ()
 
     let mutable count:int = 1
     
@@ -42,9 +45,12 @@ type MainActivity () =
     override me.OnCreate (bundle) =
         base.OnCreate (bundle)
         me.SetContentView (Resource_Layout.Main)
+        
+        let toolbar = me.FindViewById<Toolbar>(Resource_Id.toolbar)
+        me.SetSupportActionBar toolbar
        
-        if not (IO.File.Exists(Constraints.General.dbPath)) then
-            SqliteConnection.CreateFile(Constraints.General.dbPath)
+        if not (IO.File.Exists Constraints.General.dbPath) then
+            SqliteConnection.CreateFile Constraints.General.dbPath
             
         let dbcon = new SqliteConnection(Constraints.General.connectionString)
         dbcon.Open()
@@ -63,9 +69,9 @@ type MainActivity () =
             let intent = new Intent(me, typeof<InputDataActivity>)
             me.StartActivity intent
             
-        let button = me.FindViewById<Button>(Resource_Id.button)
+        let fab = me.FindViewById<FloatingActionButton>(Resource_Id.fab)
         
-        button.Click.Add(onClick)
+        fab.Click.Add(onClick)
 
     override me.OnResume() =
         base.OnResume()
