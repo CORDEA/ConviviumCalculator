@@ -15,6 +15,7 @@ open Android.Widget
 open Android.Util
 open Android.Support.V7.Widget
 open Android.Support.V7.App
+open Android.Support.Design.Widget
 
 open Mono.Data.Sqlite
 
@@ -45,13 +46,21 @@ type InputDataActivity() =
       }
   
   override me.OnCreate(bundle) =
-    base.OnCreate (bundle)
-    me.SetContentView (Resource_Layout.InputData)
+    base.OnCreate bundle
+    me.SetContentView Resource_Layout.InputData
      
-    let toolbar = me.FindViewById<Toolbar>(Resource_Id.toolbar)
+    let toolbar = me.FindViewById<Toolbar> Resource_Id.toolbar
     me.SetSupportActionBar toolbar
        
     me.editText <- me.FindViewById<EditText> Resource_Id.edit_text
+    
+    let fab = me.FindViewById<FloatingActionButton> Resource_Id.fab
+    let onClick e =
+        let text: string = me.editText.Text.ToString()
+        me.InsertData text |> Async.RunSynchronously
+        me.Finish()
+        
+    fab.Click.Add onClick
 
     me.dbcon <- new SqliteConnection(Constraints.General.connectionString)
     me.dbcon.Open()
@@ -68,9 +77,3 @@ type InputDataActivity() =
     dbcmd.ExecuteReader() |> ignore
     dbcmd.Dispose()
     trs.Commit()
-    
-  override me.OnPause() =
-      base.OnPause()
-      let text: string = me.editText.Text.ToString()
-         
-      me.InsertData(text) |> Async.RunSynchronously

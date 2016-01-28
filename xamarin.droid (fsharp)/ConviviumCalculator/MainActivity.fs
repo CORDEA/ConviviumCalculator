@@ -43,10 +43,10 @@ type MainActivity () =
         }
     
     override me.OnCreate (bundle) =
-        base.OnCreate (bundle)
-        me.SetContentView (Resource_Layout.Main)
+        base.OnCreate bundle
+        me.SetContentView Resource_Layout.Main
         
-        let toolbar = me.FindViewById<Toolbar>(Resource_Id.toolbar)
+        let toolbar = me.FindViewById<Toolbar> Resource_Id.toolbar
         me.SetSupportActionBar toolbar
        
         if not (IO.File.Exists Constraints.General.dbPath) then
@@ -60,7 +60,7 @@ type MainActivity () =
         dbcmd.Dispose()
         dbcon.Close()
         
-        let listView = me.FindViewById<ListView>(Resource_Id.list_view)
+        let listView = me.FindViewById<ListView> Resource_Id.list_view
         
         me.adapter <- new ListAdapter(me, [])
         listView.Adapter <- me.adapter
@@ -69,7 +69,7 @@ type MainActivity () =
             let intent = new Intent(me, typeof<InputDataActivity>)
             me.StartActivity intent
             
-        let fab = me.FindViewById<FloatingActionButton>(Resource_Id.fab)
+        let fab = me.FindViewById<FloatingActionButton> Resource_Id.fab
         
         fab.Click.Add(onClick)
 
