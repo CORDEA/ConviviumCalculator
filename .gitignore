@@ -138,3 +138,5 @@ Thumbs.db
 
 #dotCover
 *.dotCover
+
+Resource.designer.fs
