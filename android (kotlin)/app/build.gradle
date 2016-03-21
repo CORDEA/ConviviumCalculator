@@ -28,9 +28,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
-    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.0-beta-4584'
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1+'
     compile 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
-    compile 'com.pawegio.kandroid:kandroid:0.4.0@aar'
     compile 'io.reactivex:rxkotlin:0.30.1'
 
     compile 'io.realm:realm-android:0.87.0'

@@ -1,13 +1,12 @@
 package jp.cordea.conviviumcalculator
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Switch
 import android.widget.TextView
-import com.pawegio.kandroid.find
-import com.pawegio.kandroid.inflateLayout
 import io.realm.Realm
 
 /**
@@ -25,15 +24,15 @@ class ListAdapter(context : Context) : ArrayAdapter<ListItem>(context, R.layout.
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
-        val view = convertView ?: context.inflateLayout(R.layout.list_item, parent)
+        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.list_item, parent)
 
         val item = getItem(position);
         item ?: return convertView;
-        var textView = view.find<TextView>(R.id.name)
+        var textView = view.findViewById(R.id.name) as TextView
         textView.text = item.name
-        textView = view.find<TextView>(R.id.price)
+        textView = view.findViewById(R.id.price) as TextView
         textView.text = "¥ %,d".format(item.price)
-        val switch: Switch = view.find<Switch>(R.id.item_switch)
+        val switch: Switch = view.findViewById(R.id.item_switch) as  Switch
         switch.isChecked = item.switch
 
         switch.setOnCheckedChangeListener { compoundButton, b ->

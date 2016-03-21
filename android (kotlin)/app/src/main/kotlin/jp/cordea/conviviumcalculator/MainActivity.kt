@@ -1,15 +1,16 @@
 package jp.cordea.conviviumcalculator
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ListView
 import butterknife.bindView
-import com.pawegio.kandroid.alert
-import com.pawegio.kandroid.startActivity
 import io.realm.Realm
 
 class MainActivity : AppCompatActivity() {
@@ -27,15 +28,20 @@ class MainActivity : AppCompatActivity() {
 
         listView.adapter = ListAdapter(this)
 
+        val context: Context = this
         fab.setOnClickListener {
-            startActivity<InputDataActivity>()
+            val intent = Intent(context, InputDataActivity::class.java)
+            startActivity(intent)
         }
+        val dialog: AlertDialog =
+                AlertDialog
+                        .Builder(context)
+                        .setTitle(R.string.dialog_title)
+                        .create()
         sumFab.setOnClickListener {
             val res = calc()
-            alert {
-                title(R.string.dialog_title)
-                message("all: ¥ %,d\nrecovered: ¥ %,d".format(res[0], res[1]))
-            }.show()
+            dialog.setMessage("all: ¥ %,d\nrecovered: ¥ %,d".format(res[0], res[1]))
+            dialog.show()
         }
     }
 
