@@ -26,5 +26,20 @@ namespace ConviviumCalculator
         {
             this.InitializeComponent();
         }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void AppBarAcceptButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AppBarCancelButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

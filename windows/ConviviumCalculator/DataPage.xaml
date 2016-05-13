@@ -6,8 +6,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Icon="Accept" Label="Accept" Click="AppBarAcceptButton_Click"/>
+            <AppBarButton Icon="Cancel" Label="Cancel" Click="AppBarCancelButton_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <TextBox x:Name="textBox" TextChanged="textBox_TextChanged" />
     </Grid>
 </Page>
