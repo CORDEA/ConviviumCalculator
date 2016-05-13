@@ -7,6 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.BottomAppBar>
+        <CommandBar x:Name="commandBar" >
+            <CommandBar.Content>
+                <Grid />
+            </CommandBar.Content>
+            <AppBarButton Icon="Add" Label="Input" />
+            <AppBarButton Icon="Bullets" Label="Sum" />
+        </CommandBar>
+    </Page.BottomAppBar>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ListView x:Name="listView" ItemsSource="{x:Bind ViewModel.ListItems}">
             <ListView.ItemContainerStyle>
@@ -27,9 +37,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <CommandBar x:Name="commandBar" VerticalAlignment="Bottom">
-            <AppBarButton Icon="Add" Label="Input" />
-            <AppBarButton Icon="Bullets" Label="Sum" />
-        </CommandBar>
     </Grid>
 </Page>
