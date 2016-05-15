@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Realms;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConviviumCalculator
 {
@@ -16,6 +13,14 @@ namespace ConviviumCalculator
             {
                 return listItems;
             }
+        }
+
+        public void SaveFlag(string name, bool isSwitch)
+        {
+            var realm = Realm.GetInstance();
+            var item = realm.All<ListItem>().Where(i => i.Name == name).First();
+            realm.Write(() => item.IsSwitch = isSwitch);
+            realm.Close();
         }
 
         public MainViewModel()
