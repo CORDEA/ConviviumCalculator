@@ -98,6 +98,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConnectionUtils.cs" />
     <Compile Include="DataPage.xaml.cs">
       <DependentUpon>DataPage.xaml</DependentUpon>
     </Compile>
