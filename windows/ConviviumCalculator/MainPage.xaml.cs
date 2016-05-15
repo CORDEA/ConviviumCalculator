@@ -41,5 +41,10 @@ namespace ConviviumCalculator
                 ViewModel.SaveFlag(item.Name, checkBox.IsChecked ?? false);
             }
         }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(DataPage));
+        }
     }
 }

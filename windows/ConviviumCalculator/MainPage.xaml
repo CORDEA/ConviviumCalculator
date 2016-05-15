@@ -12,7 +12,7 @@
             <CommandBar.Content>
                 <Grid />
             </CommandBar.Content>
-            <AppBarButton Icon="Add" Label="Input" />
+            <AppBarButton Icon="Add" Label="Input" Click="AppBarButton_Click" />
             <AppBarButton Icon="Bullets" Label="Sum" />
         </CommandBar>
     </Page.BottomAppBar>
