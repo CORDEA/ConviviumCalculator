@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,24 +10,27 @@ namespace ConviviumCalculator
     /// </summary>
     public sealed partial class DataPage : Page
     {
+        private DataViewModel ViewModel { get; set; }
+
         public DataPage()
         {
             this.InitializeComponent();
-        }
-
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            ViewModel = new DataViewModel();
         }
 
         private void AppBarAcceptButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (string.IsNullOrEmpty(textBox.Text))
+            {
+                return;
+            }
+            ViewModel.SaveCsvString(textBox.Text);
+            Frame.GoBack();
         }
 
         private void AppBarCancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Frame.GoBack();
         }
     }
 }

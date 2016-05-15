@@ -17,6 +17,6 @@
     </Page.BottomAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox x:Name="textBox" TextChanged="textBox_TextChanged" />
+        <TextBox x:Name="textBox" TextWrapping="Wrap" AcceptsReturn="True" MaxHeight="100" Text="{x:Bind ViewModel.CsvString}"/>
     </Grid>
 </Page>
