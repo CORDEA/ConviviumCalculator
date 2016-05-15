@@ -102,6 +102,7 @@
     <Compile Include="DataPage.xaml.cs">
       <DependentUpon>DataPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataViewModel.cs" />
     <Compile Include="ListItem.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
