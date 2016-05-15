@@ -37,7 +37,8 @@ namespace ConviviumCalculator
             var context = checkBox.DataContext;
             if (context is ListItem)
             {
-                // save
+                var item = context as ListItem;
+                ViewModel.SaveFlag(item.Name, checkBox.IsChecked ?? false);
             }
         }
     }
