@@ -24,7 +24,7 @@ class ListAdapter(context : Context) : ArrayAdapter<ListItem>(context, R.layout.
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
-        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.list_item, parent)
+        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.list_item, null, false)
 
         val item = getItem(position);
         item ?: return convertView;
@@ -32,15 +32,19 @@ class ListAdapter(context : Context) : ArrayAdapter<ListItem>(context, R.layout.
         textView.text = item.name
         textView = view.findViewById(R.id.price) as TextView
         textView.text = "¥ %,d".format(item.price)
+
         val switch: Switch = view.findViewById(R.id.item_switch) as  Switch
+        switch.setOnCheckedChangeListener(null)
+
         switch.isChecked = item.switch
 
         switch.setOnCheckedChangeListener { compoundButton, b ->
             val realm = Realm.getInstance(context)
             val model = realm.where(ListItem::class.java).equalTo("name", items[position].name).findFirst()
-            realm.use {
-                model.switch = b
-            }
+            realm.beginTransaction()
+            model.switch = b
+            realm.commitTransaction()
+            realm.close()
         }
         return view;
     }
