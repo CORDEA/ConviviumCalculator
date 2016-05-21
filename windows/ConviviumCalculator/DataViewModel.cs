@@ -14,15 +14,20 @@ namespace ConviviumCalculator
             foreach (var row in csvStrings)
             {
                 var items = row.Split(',');
-                if (items.Length != 3)
+                if (items.Length < 2 || items.Length > 3)
                 {
                     continue;
                 }
                 var isSwitch = false;
                 var price = 0;
-                if (!bool.TryParse(items[2].Trim(), out isSwitch) || !int.TryParse(items[1].Trim(), out price))
+
+                if (!int.TryParse(items[1].Trim(), out price))
                 {
                     continue;
+                }
+                if (items.Length == 3)
+                {
+                    bool.TryParse(items[2].Trim(), out isSwitch);
                 }
                 var name = items[0].Trim();
                 listItems.Add(new ListItem()
