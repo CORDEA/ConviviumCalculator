@@ -27,6 +27,22 @@ namespace ConviviumCalculator
             conn.Close();
         }
 
+        public int[] GetStats()
+        {
+            SQLiteConnection conn = ConnectionUtils.GetSQLiteConnection();
+            var items = conn.Table<ListItem>();
+            int sum = 0, rec = 0;
+            foreach(var item in items)
+            {
+                sum += item.Price;
+                if (item.IsSwitch)
+                {
+                    rec += item.Price;
+                }
+            }
+            return new int[] { sum, rec };
+        }
+
         private void GetItemsFromDb(SQLiteConnection conn)
         {
             var items = conn.Table<ListItem>();
