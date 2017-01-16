@@ -16,7 +16,7 @@ class InputDataViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     
-    fileprivate let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
