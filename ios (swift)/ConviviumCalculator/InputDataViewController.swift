@@ -16,28 +16,24 @@ class InputDataViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     
-    private let disposeBag = DisposeBag()
+    fileprivate let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         textView.text = objToString()
-        
-        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "buttonPressed:")
-        self.navigationItem.rightBarButtonItem = button
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    func buttonPressed(sender: UIBarButtonItem) {
+    @IBAction func onRegister(_ sender: Any) {
         let text = textView.text
-        stringToObj(text)
+        stringToObj(text!)
     }
     
-    private func stringToObj(csv: String) {
+    private func stringToObj(_ csv: String) {
         if let realm = try? Realm() {
             realm.beginWrite()
             realm.deleteAll()
@@ -45,10 +41,10 @@ class InputDataViewController: UIViewController {
             Observable
                 .just(csv)
                 .flatMap {
-                    $0.componentsSeparatedByString("\n").toObservable()
+                    Observable.from($0.components(separatedBy: "\n"))
                 }
                 .map {
-                    $0.componentsSeparatedByString(",")
+                    $0.components(separatedBy: ",")
                 }
                 .filter {
                     return $0.count > 1
@@ -63,9 +59,9 @@ class InputDataViewController: UIViewController {
                 .map { it in
                     realm.add(it)
                 }
-                .subscribeCompleted({ _ in
+                .subscribe(onNext: nil, onError: nil, onCompleted: {
                     _ = try? realm.commitWrite()
-                })
+                }, onDisposed: nil)
                 .addDisposableTo(disposeBag)
         }
     }
@@ -73,8 +69,7 @@ class InputDataViewController: UIViewController {
     private func objToString() -> String? {
         if let realm = try? Realm() {
             let lines = try?
-                realm.objects(ListItem)
-                    .toObservable()
+                Observable.from(realm.objects(ListItem.self))
                     .map { it -> String in
                         if let name = it.name {
                             return String(format: "%@,%d,%@", name, it.price, String(it.isSwitch))
@@ -85,7 +80,7 @@ class InputDataViewController: UIViewController {
                     .toBlocking()
                     .first() ?? []
             if let lines = lines {
-                return lines.joinWithSeparator("\n")
+                return lines.joined(separator: "\n")
             }
         }
         return nil

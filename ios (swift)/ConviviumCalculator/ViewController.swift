@@ -23,13 +23,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         tableView.delegate = self
         
-        let button = UIBarButtonItem(title: "Sum", style: .Plain, target: self, action: "onSumPressed:")
+        let button = UIBarButtonItem(
+            title: "Sum",
+            style: .plain,
+            target: self,
+            action: #selector(ViewController.onSumPressed(_:))
+        )
         self.navigationItem.leftBarButtonItem = button
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if let realm = try? Realm() {
-            items = realm.objects(ListItem)
+            items = realm.objects(ListItem.self)
             tableView.reloadData()
         }
     }
@@ -39,54 +44,55 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
-    func onSumPressed(sender: UIBarButtonItem) {
+    func onSumPressed(_ sender: UIBarButtonItem) {
         let message = String(format: "all: ¥ %@\nrecovered: ¥ %@", arguments: calc())
         let ac = UIAlertController(
             title: "Summary",
             message: message,
-            preferredStyle: .Alert
+            preferredStyle: .alert
         )
         
         let da = UIAlertAction(
             title: "OK",
-            style: .Default,
+            style: .default,
             handler: nil
         )
         ac.addAction(da)
         
-        presentViewController(ac, animated: true, completion: nil)
+        present(ac, animated: true, completion: nil)
     }
     
-    private func getNumberFormatter() -> NSNumberFormatter {
-        let fmt = NSNumberFormatter()
-        fmt.numberStyle = .DecimalStyle
+    private func getNumberFormatter() -> NumberFormatter {
+        let fmt = NumberFormatter()
+        fmt.numberStyle = .decimal
         fmt.groupingSeparator = ","
         fmt.groupingSize = 3
         return fmt
     }
     
-    private func calc() -> [CVarArgType] {
+    private func calc() -> [CVarArg] {
         let fmt = getNumberFormatter()
         if let realm = try? Realm() {
-            items = realm.objects(ListItem)
+            items = realm.objects(ListItem.self)
             var all = 0, recovered = 0
             
             for li in items {
                 all += li.price
                 recovered += li.isSwitch ? li.price : 0
             }
-            if let all = fmt.stringFromNumber(all), recovered = fmt.stringFromNumber(recovered) {
+            if let all = fmt.string(from: NSNumber(value: all)),
+                let recovered = fmt.string(from: NSNumber(value: recovered)) {
                 return [all, recovered]
             }
         }
         return ["0", "0"]
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseCell", forIndexPath: indexPath) as! TableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell", for: indexPath) as! TableViewCell
         
         if let num = getNumberFormatter()
-            .stringFromNumber(items[indexPath.row].price) {
+            .string(from: NSNumber(value: items[indexPath.row].price)) {
                 cell.nameLabel.text = items[indexPath.row].name
                 
                 cell.priceLabel.text = String(format: "¥ %@", num)
@@ -96,11 +102,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
 

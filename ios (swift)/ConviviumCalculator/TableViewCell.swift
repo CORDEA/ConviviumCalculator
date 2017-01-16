@@ -21,22 +21,25 @@ class TableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    @IBAction func switched(sender: UISwitch) {
+    @IBAction func switched(_ sender: UISwitch) {
         guard let realm = try? Realm() else {
             return
         }
         
         if let text = nameLabel.text {
-            guard let item = realm.objects(ListItem).filter("name = '%@'", text).first else {
+            guard let item = realm
+                .objects(ListItem.self)
+                .filter(NSPredicate(format: "name = %@", text))
+                .first else {
                 return
             }
             _ = try? realm.write({
-                item.isSwitch = priceSwitch.on
+                item.isSwitch = priceSwitch.isOn
             })
         }
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
