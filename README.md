@@ -5,11 +5,11 @@ This repository contains the iOS apps and Android apps, BlackBerry apps with sim
 
 ## iOS
 
-Use swift 2.1.1
+Use swift 3.0.2
 
 ## Android (kotlin)
 
-Use Kotlin 1.0.0-beta-4584
+Use Kotlin 1.0.6
 
 ## Android (F#)
 
