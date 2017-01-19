@@ -40,9 +40,9 @@ class InputDataActivity : AppCompatActivity() {
     private val compositeSubscription = CompositeSubscription()
 
     private fun stringToObj(csv: String) {
-        val realm = Realm.getInstance(this)
+        val realm = Realm.getDefaultInstance()
         realm.beginTransaction()
-        realm.allObjects(ListItem::class.java).clear()
+        realm.where(ListItem::class.java).findAll().deleteAllFromRealm()
         compositeSubscription.add(
                 Observable
                         .just(csv)
@@ -50,8 +50,7 @@ class InputDataActivity : AppCompatActivity() {
                         .map { it.split(',').toTypedArray() }
                         .filter { it.size > 1 }
                         .map {
-                            val item = realm.createObject(ListItem::class.java)
-                            item.name = it[0]
+                            val item = realm.createObject(ListItem::class.java, it[0])
                             item.price = it[1].toInt()
                             item.switch = if (it.size > 2) it[2].toBoolean() else false
                         }
@@ -66,9 +65,9 @@ class InputDataActivity : AppCompatActivity() {
     }
 
     private fun objToString(): String {
-        Realm.getInstance(this).let {
+        Realm.getDefaultInstance().let {
             return Observable
-                    .from(it.allObjects(ListItem::class.java))
+                    .from(it.where(ListItem::class.java).findAll())
                     .map { "%s,%d,%s".format(it.name, it.price, it.switch.toString()) }
                     .toList()
                     .toBlocking()

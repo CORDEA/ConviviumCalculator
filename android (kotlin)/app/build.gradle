@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 25
@@ -30,8 +31,5 @@ dependencies {
     compile 'com.android.support:design:25.1.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
-    compile 'io.reactivex:rxkotlin:0.30.1'
-
-    compile 'io.realm:realm-android:0.87.0'
-    kapt 'io.realm:realm-android:0.87.0'
+    compile 'io.reactivex:rxkotlin:0.60.0'
 }

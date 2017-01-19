@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        Realm.init(this)
+
         listView.adapter = ListAdapter(this)
 
         val context: Context = this
@@ -46,8 +48,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calc(): IntArray {
-        Realm.getInstance(this).let {
-            val items = it.allObjects(ListItem::class.java)
+        Realm.getDefaultInstance().let {
+            val items = it.where(ListItem::class.java).findAll()
             var all = 0
             var recovered = 0
             for (item in items) {
@@ -60,8 +62,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Realm.getInstance(this).let {
-            val items = it.allObjects(ListItem::class.java).toTypedArray()
+        Realm.getDefaultInstance().let {
+            val items = it.where(ListItem::class.java).findAll().toTypedArray()
             listView.adapter?.let{
                 val i = it as ListAdapter
                 i.items = items

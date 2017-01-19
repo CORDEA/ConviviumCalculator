@@ -13,6 +13,7 @@ import io.realm.Realm
  * Created by CORDEA on 2016/01/02.
  */
 class ListAdapter(context : Context) : ArrayAdapter<ListItem>(context, R.layout.list_item) {
+
     var items: Array<ListItem> = arrayOf()
 
     override fun getItem(position: Int): ListItem? {
@@ -39,7 +40,7 @@ class ListAdapter(context : Context) : ArrayAdapter<ListItem>(context, R.layout.
         switch.isChecked = item.switch
 
         switch.setOnCheckedChangeListener { compoundButton, b ->
-            val realm = Realm.getInstance(context)
+            val realm = Realm.getDefaultInstance()
             val model = realm.where(ListItem::class.java).equalTo("name", items[position].name).findFirst()
             realm.beginTransaction()
             model.switch = b
