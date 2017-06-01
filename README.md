@@ -9,7 +9,7 @@ Use swift 3.0.2
 
 ## Android (kotlin)
 
-Use Kotlin 1.0.6
+Use Kotlin 1.1.2-4
 
 ## Android (F#)
 
