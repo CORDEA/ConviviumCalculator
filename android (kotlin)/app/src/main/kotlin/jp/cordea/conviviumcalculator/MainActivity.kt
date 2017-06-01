@@ -16,9 +16,11 @@ import io.realm.Realm
 class MainActivity : AppCompatActivity() {
 
     val toolbar: Toolbar by bindView(R.id.toolbar)
+
     val listView: ListView by bindView(R.id.listview)
 
     val fab: FloatingActionButton by bindView(R.id.fab)
+
     val sumFab: FloatingActionButton by bindView(R.id.sum_fab)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +44,8 @@ class MainActivity : AppCompatActivity() {
                         .create()
         sumFab.setOnClickListener {
             val res = calc()
-            dialog.setMessage("all: ¥ %,d\nrecovered: ¥ %,d".format(res[0], res[1]))
+            dialog.setMessage(context.getString(R.string.dialog_message_format)
+                    .format(res[0], res[1]))
             dialog.show()
         }
     }

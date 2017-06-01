@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">ConviviumCalculator</string>
-    <string name="input_data_title">Input data</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_input_data">InputDataActivity</string>
+    <string name="title_activity_input_data">Input data</string>
     <string name="dialog_title">Summary</string>
+    <string name="dialog_message_format">all: ¥ %1$,d\nrecovered: ¥ %2$,d</string>
+
 </resources>
