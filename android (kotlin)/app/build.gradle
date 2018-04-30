@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
+
 apply plugin: 'kotlin-android'
+
 apply plugin: 'realm-android'
+
+apply plugin: 'kotlin-kapt'
 
 android {
 
@@ -21,6 +25,9 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -29,6 +36,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:27.1.1'
     compile 'com.android.support:design:27.1.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
     compile 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    kapt "com.android.databinding:compiler:3.0.1"
 }

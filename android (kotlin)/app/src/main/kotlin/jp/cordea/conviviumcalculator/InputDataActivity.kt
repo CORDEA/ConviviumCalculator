@@ -1,35 +1,31 @@
 package jp.cordea.conviviumcalculator
 
+import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.text.SpannableStringBuilder
-import android.widget.EditText
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.realm.Realm
-import kotterknife.bindView
+import jp.cordea.conviviumcalculator.databinding.ActivityInputDataBinding
 
 class InputDataActivity : AppCompatActivity() {
-
-    private val toolbar: Toolbar by bindView(R.id.toolbar)
-
-    private val editText: EditText by bindView(R.id.edittext)
-
-    private val fab: FloatingActionButton by bindView(R.id.fab)
 
     private val compositeDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_input_data)
-        setSupportActionBar(toolbar)
+        val binding = DataBindingUtil.setContentView<ActivityInputDataBinding>(
+                this,
+                R.layout.activity_input_data
+        )
+        setSupportActionBar(binding.toolbar)
 
-        editText.text = SpannableStringBuilder(objToString())
-        fab.setOnClickListener {
-            val text = editText.text.toString()
+        val content = binding.content!!
+        content.editText.text = SpannableStringBuilder(objToString())
+        binding.fab.setOnClickListener {
+            val text = content.editText.text.toString()
             stringToObj(text)
         }
     }

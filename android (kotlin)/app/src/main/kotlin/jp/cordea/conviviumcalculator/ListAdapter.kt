@@ -5,21 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Switch
-import android.widget.TextView
 import io.realm.Realm
+import jp.cordea.conviviumcalculator.databinding.ListItemBinding
 
 class ListAdapter(context: Context) : ArrayAdapter<ListItem>(context, R.layout.list_item) {
 
     var items: Array<ListItem> = arrayOf()
 
-    override fun getItem(position: Int): ListItem? {
-        return items[position]
-    }
+    override fun getItem(position: Int): ListItem? =
+            items[position]
 
-    override fun getCount(): Int {
-        return items.size
-    }
+    override fun getCount(): Int =
+            items.size
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
         var view = convertView
@@ -36,22 +33,24 @@ class ListAdapter(context: Context) : ArrayAdapter<ListItem>(context, R.layout.l
 
         item ?: return convertView
 
-        viewHolder.nameTextView.text = item.name
-        viewHolder.priceTextView.text = "¥ %,d".format(item.price)
+        viewHolder.binding.run {
+            name.text = item.name
+            price.text = "¥ %,d".format(item.price)
 
-        viewHolder.switch.setOnCheckedChangeListener(null)
+            itemSwitch.setOnCheckedChangeListener(null)
 
-        viewHolder.switch.isChecked = item.switch
+            itemSwitch.isChecked = item.switch
 
-        viewHolder.switch.setOnCheckedChangeListener { _, b ->
-            val realm = Realm.getDefaultInstance()
-            val model = realm.where(ListItem::class.java)
-                    .equalTo("name", items[position].name)
-                    .findFirst()
-            realm.beginTransaction()
-            model.switch = b
-            realm.commitTransaction()
-            realm.close()
+            itemSwitch.setOnCheckedChangeListener { _, b ->
+                val realm = Realm.getDefaultInstance()
+                val model = realm.where(ListItem::class.java)
+                        .equalTo("name", items[position].name)
+                        .findFirst()
+                realm.beginTransaction()
+                model.switch = b
+                realm.commitTransaction()
+                realm.close()
+            }
         }
 
         return view
@@ -59,10 +58,6 @@ class ListAdapter(context: Context) : ArrayAdapter<ListItem>(context, R.layout.l
 
     class ViewHolder(view: View) {
 
-        val nameTextView: TextView = view.findViewById<TextView>(R.id.name)
-
-        val priceTextView: TextView = view.findViewById<TextView>(R.id.price)
-
-        val switch: Switch = view.findViewById<Switch>(R.id.item_switch)
+        val binding = ListItemBinding.bind(view)!!
     }
 }

@@ -2,37 +2,32 @@ package jp.cordea.conviviumcalculator
 
 import android.content.Context
 import android.content.Intent
+import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.Menu
-import android.widget.ListView
 import io.realm.Realm
-import kotterknife.bindView
+import jp.cordea.conviviumcalculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val toolbar: Toolbar by bindView(R.id.toolbar)
-
-    private val listView: ListView by bindView(R.id.listview)
-
-    private val fab: FloatingActionButton by bindView(R.id.fab)
-
-    private val sumFab: FloatingActionButton by bindView(R.id.sum_fab)
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+        binding = DataBindingUtil.setContentView<ActivityMainBinding>(
+                this,
+                R.layout.activity_main
+        )
+        setSupportActionBar(binding.toolbar)
 
         Realm.init(this)
 
-        listView.adapter = ListAdapter(this)
+        binding.content!!.listView.adapter = ListAdapter(this)
 
         val context: Context = this
-        fab.setOnClickListener {
+        binding.fab.setOnClickListener {
             val intent = Intent(context, InputDataActivity::class.java)
             startActivity(intent)
         }
@@ -41,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                         .Builder(context)
                         .setTitle(R.string.dialog_title)
                         .create()
-        sumFab.setOnClickListener {
+        binding.sumFab.setOnClickListener {
             val res = calc()
             dialog.setMessage(context.getString(R.string.dialog_message_format)
                     .format(res[0], res[1]))
@@ -66,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         Realm.getDefaultInstance().let {
             val items = it.where(ListItem::class.java).findAll().toTypedArray()
-            listView.adapter?.let {
+            binding.content!!.listView.adapter?.let {
                 val i = it as ListAdapter
                 i.items = items
                 i.notifyDataSetChanged()
