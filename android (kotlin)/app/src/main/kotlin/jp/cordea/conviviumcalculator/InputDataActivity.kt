@@ -4,10 +4,10 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.SpannableStringBuilder
-import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
-import io.realm.Realm
+import io.reactivex.schedulers.Schedulers
 import jp.cordea.conviviumcalculator.databinding.ActivityInputDataBinding
 
 class InputDataActivity : AppCompatActivity() {
@@ -23,52 +23,30 @@ class InputDataActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         val content = binding.content!!
-        content.editText.text = SpannableStringBuilder(objToString())
+        CsvIo.output()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    content.editText.text = SpannableStringBuilder(it)
+                }, {
+                })
+                .addTo(compositeDisposable)
         binding.fab.setOnClickListener {
             val text = content.editText.text.toString()
-            stringToObj(text)
+            CsvIo.input(text)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({
+                        finish()
+                    }, {
+                        finish()
+                    })
+                    .addTo(compositeDisposable)
         }
     }
 
     override fun onPause() {
         super.onPause()
         compositeDisposable.clear()
-    }
-
-    private fun stringToObj(csv: String) {
-        val realm = Realm.getDefaultInstance()
-        realm.beginTransaction()
-        realm.where(ListItem::class.java).findAll().deleteAllFromRealm()
-        Observable
-                .just(csv)
-                .flatMap { Observable.fromIterable(it.split('\n')) }
-                .map { it.split(',').toTypedArray() }
-                .filter { it.isNotEmpty() }
-                .doOnNext {
-                    it[1].toIntOrNull()?.let { price ->
-                        val item = realm.createObject(ListItem::class.java, it[0])
-                        item.price = price
-                        item.switch = if (it.size > 2) it[2].toBoolean() else false
-                    }
-                }
-                .doOnComplete {
-                    realm.commitTransaction()
-                    realm.close()
-                    finish()
-                }
-                .doOnError { finish() }
-                .subscribe()
-                .addTo(compositeDisposable)
-    }
-
-    private fun objToString(): String {
-        Realm.getDefaultInstance().let {
-            return Observable
-                    .fromIterable(it.where(ListItem::class.java).findAll())
-                    .map { "%s,%d,%s".format(it.name, it.price, it.switch.toString()) }
-                    .toList()
-                    .blockingGet()
-                    .joinToString("\n")
-        }
     }
 }
