@@ -14,13 +14,13 @@ import kotterknife.bindView
 
 class MainActivity : AppCompatActivity() {
 
-    val toolbar: Toolbar by bindView(R.id.toolbar)
+    private val toolbar: Toolbar by bindView(R.id.toolbar)
 
-    val listView: ListView by bindView(R.id.listview)
+    private val listView: ListView by bindView(R.id.listview)
 
-    val fab: FloatingActionButton by bindView(R.id.fab)
+    private val fab: FloatingActionButton by bindView(R.id.fab)
 
-    val sumFab: FloatingActionButton by bindView(R.id.sum_fab)
+    private val sumFab: FloatingActionButton by bindView(R.id.sum_fab)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

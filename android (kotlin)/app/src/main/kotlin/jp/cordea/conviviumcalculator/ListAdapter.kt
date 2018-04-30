@@ -9,10 +9,7 @@ import android.widget.Switch
 import android.widget.TextView
 import io.realm.Realm
 
-/**
- * Created by CORDEA on 2016/01/02.
- */
-class ListAdapter(context : Context) : ArrayAdapter<ListItem>(context, R.layout.list_item) {
+class ListAdapter(context: Context) : ArrayAdapter<ListItem>(context, R.layout.list_item) {
 
     var items: Array<ListItem> = arrayOf()
 

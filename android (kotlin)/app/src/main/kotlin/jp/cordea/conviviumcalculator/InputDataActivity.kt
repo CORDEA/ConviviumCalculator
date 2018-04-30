@@ -20,6 +20,8 @@ class InputDataActivity : AppCompatActivity() {
 
     private val fab: FloatingActionButton by bindView(R.id.fab)
 
+    private val compositeDisposable = CompositeDisposable()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_input_data)
@@ -34,10 +36,8 @@ class InputDataActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        compositeSubscription.clear()
+        compositeDisposable.clear()
     }
-
-    private val compositeSubscription = CompositeDisposable()
 
     private fun stringToObj(csv: String) {
         val realm = Realm.getDefaultInstance()
@@ -62,7 +62,7 @@ class InputDataActivity : AppCompatActivity() {
                 }
                 .doOnError { finish() }
                 .subscribe()
-                .addTo(compositeSubscription)
+                .addTo(compositeDisposable)
     }
 
     private fun objToString(): String {
