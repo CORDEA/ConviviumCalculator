@@ -8,10 +8,9 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
-import android.view.MenuItem
 import android.widget.ListView
-import butterknife.bindView
 import io.realm.Realm
+import kotterknife.bindView
 
 class MainActivity : AppCompatActivity() {
 
@@ -67,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         Realm.getDefaultInstance().let {
             val items = it.where(ListItem::class.java).findAll().toTypedArray()
-            listView.adapter?.let{
+            listView.adapter?.let {
                 val i = it as ListAdapter
                 i.items = items
                 i.notifyDataSetChanged()
@@ -77,9 +76,5 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         return false
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
     }
 }

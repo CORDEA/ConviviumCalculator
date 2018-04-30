@@ -6,10 +6,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.text.SpannableStringBuilder
 import android.widget.EditText
-import butterknife.bindView
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.realm.Realm
+import kotterknife.bindView
 
 class InputDataActivity : AppCompatActivity() {
 
@@ -42,27 +43,26 @@ class InputDataActivity : AppCompatActivity() {
         val realm = Realm.getDefaultInstance()
         realm.beginTransaction()
         realm.where(ListItem::class.java).findAll().deleteAllFromRealm()
-        compositeSubscription.add(
-                Observable
-                        .just(csv)
-                        .flatMap { Observable.fromIterable(it.split('\n')) }
-                        .map { it.split(',').toTypedArray() }
-                        .filter { it.size > 1 }
-                        .map {
-                            it[1].toIntOrNull()?.let { price ->
-                                val item = realm.createObject(ListItem::class.java, it[0])
-                                item.price = price
-                                item.switch = if (it.size > 2) it[2].toBoolean() else false
-                            }
-                        }
-                        .doOnComplete {
-                            realm.commitTransaction()
-                            realm.close()
-                            finish()
-                        }
-                        .doOnError { finish() }
-                        .subscribe()
-        )
+        Observable
+                .just(csv)
+                .flatMap { Observable.fromIterable(it.split('\n')) }
+                .map { it.split(',').toTypedArray() }
+                .filter { it.isNotEmpty() }
+                .doOnNext {
+                    it[1].toIntOrNull()?.let { price ->
+                        val item = realm.createObject(ListItem::class.java, it[0])
+                        item.price = price
+                        item.switch = if (it.size > 2) it[2].toBoolean() else false
+                    }
+                }
+                .doOnComplete {
+                    realm.commitTransaction()
+                    realm.close()
+                    finish()
+                }
+                .doOnError { finish() }
+                .subscribe()
+                .addTo(compositeSubscription)
     }
 
     private fun objToString(): String {
