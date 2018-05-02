@@ -24,7 +24,7 @@ object CsvIo {
                                     it[1].toIntOrNull()?.let { price ->
                                         val item = realm.createObject(ListItem::class.java, it[0])
                                         item.price = price
-                                        item.switch = if (it.size > 2) it[2].toBoolean() else false
+                                        item.isChecked = if (it.size > 2) it[2].toBoolean() else false
                                     }
                                 }
                                 .doOnComplete {
@@ -42,7 +42,7 @@ object CsvIo {
                         }
                     }
                     .flatMapObservable { Observable.fromIterable(it) }
-                    .map { "%s,%d,%s".format(it.name, it.price, it.switch.toString()) }
+                    .map { "%s,%d,%s".format(it.name, it.price, it.isChecked.toString()) }
                     .toList()
                     .map { it.joinToString("\n") }
 }

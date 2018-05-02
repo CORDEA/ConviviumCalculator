@@ -54,7 +54,7 @@ class CollectionStateDialogFragment : DialogFragment() {
                     .map {
                         CollectionState(
                                 it.sumBy { it.price },
-                                it.filter { it.switch }.sumBy { it.price }
+                                it.filter { it.isChecked }.sumBy { it.price }
                         )
                     }
                     .subscribeOn(Schedulers.io())

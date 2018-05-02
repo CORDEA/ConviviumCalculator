@@ -39,7 +39,7 @@ class ListAdapter(context: Context) : ArrayAdapter<ListItem>(context, R.layout.l
 
             itemSwitch.setOnCheckedChangeListener(null)
 
-            itemSwitch.isChecked = item.switch
+            itemSwitch.isChecked = item.isChecked
 
             itemSwitch.setOnCheckedChangeListener { _, b ->
                 val realm = Realm.getDefaultInstance()
@@ -47,7 +47,7 @@ class ListAdapter(context: Context) : ArrayAdapter<ListItem>(context, R.layout.l
                         .equalTo("name", items[position].name)
                         .findFirst()
                 realm.beginTransaction()
-                model!!.switch = b
+                model!!.isChecked = b
                 realm.commitTransaction()
                 realm.close()
             }

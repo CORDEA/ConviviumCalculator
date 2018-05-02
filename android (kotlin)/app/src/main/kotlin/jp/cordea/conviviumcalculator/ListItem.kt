@@ -10,5 +10,5 @@ open class ListItem : RealmObject() {
 
     open var price: Int = 0
 
-    open var switch: Boolean = false
+    open var isChecked: Boolean = false
 }
