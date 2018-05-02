@@ -47,7 +47,7 @@ class ListAdapter(context: Context) : ArrayAdapter<ListItem>(context, R.layout.l
                         .equalTo("name", items[position].name)
                         .findFirst()
                 realm.beginTransaction()
-                model.switch = b
+                model!!.switch = b
                 realm.commitTransaction()
                 realm.close()
             }
@@ -58,6 +58,6 @@ class ListAdapter(context: Context) : ArrayAdapter<ListItem>(context, R.layout.l
 
     class ViewHolder(view: View) {
 
-        val binding = ListItemBinding.bind(view)!!
+        val binding = ListItemBinding.bind(view)
     }
 }
