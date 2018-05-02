@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import io.realm.Realm
@@ -31,29 +30,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(context, InputDataActivity::class.java)
             startActivity(intent)
         }
-        val dialog: AlertDialog =
-                AlertDialog
-                        .Builder(context)
-                        .setTitle(R.string.dialog_title)
-                        .create()
         binding.sumFab.setOnClickListener {
-            val res = calc()
-            dialog.setMessage(context.getString(R.string.dialog_message_format)
-                    .format(res[0], res[1]))
-            dialog.show()
-        }
-    }
-
-    private fun calc(): IntArray {
-        Realm.getDefaultInstance().let {
-            val items = it.where(ListItem::class.java).findAll()
-            var all = 0
-            var recovered = 0
-            for (item in items) {
-                all += item.price
-                recovered += if (item.switch) item.price else 0
-            }
-            return intArrayOf(all, recovered)
+            CollectionStateDialogFragment.newInstance()
+                    .show(supportFragmentManager, CollectionStateDialogFragment.TAG)
         }
     }
 
