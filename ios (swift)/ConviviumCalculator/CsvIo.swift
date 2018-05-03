@@ -11,6 +11,8 @@ import RealmSwift
 
 class CsvIo {
 
+    private static let scheduler = SerialDispatchQueueScheduler(qos: .default)
+
     static func input(_ csv: String) -> Completable {
         return Single
             .create(subscribe: { (single) -> Disposable in
@@ -35,6 +37,8 @@ class CsvIo {
                     })
             }
             .ignoreElements()
+            .subscribeOn(scheduler)
+            .observeOn(MainScheduler.instance)
     }
 
     static func output() -> Single<String> {
@@ -65,6 +69,8 @@ class CsvIo {
             .map { (items: [String]) -> String in
                 return items.joined(separator: "\n")
             }
+            .subscribeOn(scheduler)
+            .observeOn(MainScheduler.instance)
     }
 
     private static func createListItemFromCsv(_ csv: String) -> Observable<ListItem> {
