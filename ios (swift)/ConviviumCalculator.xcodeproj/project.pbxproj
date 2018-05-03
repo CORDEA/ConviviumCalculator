@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		353BD460BEF6B0D70046AEE1 /* libPods-ConviviumCalculatorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F30DB8F2B929A680F81B04F /* libPods-ConviviumCalculatorTests.a */; };
+		4688CD81209A91F900EFD7B5 /* CsvIo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688CD80209A91F900EFD7B5 /* CsvIo.swift */; };
 		5FCAEAA41C3A35450069D566 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEAA31C3A35450069D566 /* AppDelegate.swift */; };
 		5FCAEAA61C3A35450069D566 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEAA51C3A35450069D566 /* ViewController.swift */; };
 		5FCAEAA91C3A35450069D566 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FCAEAA71C3A35450069D566 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		03A3A35FD53D563D00A1EBD3 /* Pods-ConviviumCalculatorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConviviumCalculatorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConviviumCalculatorUITests/Pods-ConviviumCalculatorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		0625AD962BA3CE6A59E5BDE1 /* Pods-ConviviumCalculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConviviumCalculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConviviumCalculator/Pods-ConviviumCalculator.release.xcconfig"; sourceTree = "<group>"; };
 		3E967C1FE8E1BC4C596EC885 /* Pods-ConviviumCalculatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConviviumCalculatorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConviviumCalculatorTests/Pods-ConviviumCalculatorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4688CD80209A91F900EFD7B5 /* CsvIo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvIo.swift; sourceTree = "<group>"; };
 		4F30DB8F2B929A680F81B04F /* libPods-ConviviumCalculatorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConviviumCalculatorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		556D48EFFE9F4F3B48F4EE6C /* Pods-ConviviumCalculatorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConviviumCalculatorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConviviumCalculatorUITests/Pods-ConviviumCalculatorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5FCAEAA01C3A35450069D566 /* ConviviumCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConviviumCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 				5FCAEAD31C3A3B350069D566 /* ListItem.swift */,
 				5FCAEAD51C3A3CA70069D566 /* TableViewCell.swift */,
 				5FCAEAD91C3A42410069D566 /* InputDataViewController.swift */,
+				4688CD80209A91F900EFD7B5 /* CsvIo.swift */,
 			);
 			path = ConviviumCalculator;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4688CD81209A91F900EFD7B5 /* CsvIo.swift in Sources */,
 				5FCAEAD41C3A3B350069D566 /* ListItem.swift in Sources */,
 				5FCAEAD61C3A3CA70069D566 /* TableViewCell.swift in Sources */,
 				5FCAEAA61C3A35450069D566 /* ViewController.swift in Sources */,
