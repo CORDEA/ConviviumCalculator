@@ -45,7 +45,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @objc func onSumPressed(_ sender: UIBarButtonItem) {
-        let message = String(format: "all: ¥ %@\nrecovered: ¥ %@", arguments: calculateCurrentCollectionState())
+        let message = String(format: "Sum: ¥ %@\nCollected: ¥ %@", arguments: calculateCurrentCollectionState())
         let controller = UIAlertController(
             title: "Summary",
             message: message,
