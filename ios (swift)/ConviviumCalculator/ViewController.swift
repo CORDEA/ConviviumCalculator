@@ -72,18 +72,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private func calculateCurrentCollectionState() -> [String] {
         let fmt = getNumberFormatter()
-        if let realm = try? Realm() {
-            items = realm.objects(ListItem.self)
-            var sum = 0, collected = 0
-            
-            for item in items {
-                sum += item.price
-                collected += item.isChecked ? item.price : 0
-            }
-            if let sum = fmt.string(from: NSNumber(value: sum)),
-                let collected = fmt.string(from: NSNumber(value: collected)) {
-                return [sum, collected]
-            }
+        guard let realm = try? Realm() else {
+            return ["0", "0"]
+        }
+        items = realm.objects(ListItem.self)
+        var sum = 0, collected = 0
+
+        for item in items {
+            sum += item.price
+            collected += item.isChecked ? item.price : 0
+        }
+        if let sum = fmt.string(from: NSNumber(value: sum)),
+            let collected = fmt.string(from: NSNumber(value: collected)) {
+            return [sum, collected]
         }
         return ["0", "0"]
     }
