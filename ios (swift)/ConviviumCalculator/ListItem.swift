@@ -11,9 +11,9 @@ import RealmSwift
 import Realm
 
 class ListItem: Object {
-    dynamic var name: String? = nil
-    dynamic var price: Int = 0
-    dynamic var isSwitch: Bool = false
+    @objc dynamic var name: String? = nil
+    @objc dynamic var price: Int = 0
+    @objc dynamic var isSwitch: Bool = false
     
     override static func primaryKey() -> String? {
         return "name"

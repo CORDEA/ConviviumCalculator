@@ -44,7 +44,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
-    func onSumPressed(_ sender: UIBarButtonItem) {
+    @objc func onSumPressed(_ sender: UIBarButtonItem) {
         let message = String(format: "all: ¥ %@\nrecovered: ¥ %@", arguments: calc())
         let ac = UIAlertController(
             title: "Summary",
