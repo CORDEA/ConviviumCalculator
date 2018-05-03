@@ -13,7 +13,7 @@ import Realm
 class ListItem: Object {
     @objc dynamic var name: String? = nil
     @objc dynamic var price: Int = 0
-    @objc dynamic var isSwitch: Bool = false
+    @objc dynamic var isChecked: Bool = false
     
     override static func primaryKey() -> String? {
         return "name"

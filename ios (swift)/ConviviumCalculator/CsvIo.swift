@@ -56,7 +56,7 @@ class CsvIo {
             }
             .map { (item: ListItem) in
                 if let name = item.name {
-                    return String(format: "%@,%d,%@", name, item.price, String(item.isSwitch))
+                    return String(format: "%@,%d,%@", name, item.price, String(item.isChecked))
                 }
                 return ""
             }
@@ -89,7 +89,7 @@ class CsvIo {
                 let item = ListItem()
                 item.name = line[0]
                 item.price = Int(line[1]) ?? 0
-                item.isSwitch = line.count > 2 ? NSString(string: line[2]).boolValue : false
+                item.isChecked = line.count > 2 ? NSString(string: line[2]).boolValue : false
                 return item
         }
     }

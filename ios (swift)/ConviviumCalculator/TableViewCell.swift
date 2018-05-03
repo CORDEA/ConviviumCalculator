@@ -34,7 +34,7 @@ class TableViewCell: UITableViewCell {
                 return
             }
             _ = try? realm.write({
-                item.isSwitch = priceSwitch.isOn
+                item.isChecked = priceSwitch.isOn
             })
         }
     }
