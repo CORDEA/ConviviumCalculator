@@ -5,7 +5,7 @@ This repository contains the iOS apps and Android apps, BlackBerry apps with sim
 
 ## iOS
 
-Use swift 3.0.2
+Use swift 4.0.3
 
 ## Android (kotlin)
 
