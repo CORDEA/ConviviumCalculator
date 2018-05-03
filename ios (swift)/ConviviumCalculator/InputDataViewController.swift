@@ -62,7 +62,7 @@ class InputDataViewController: UIViewController {
                 .subscribe(onNext: nil, onError: nil, onCompleted: {
                     _ = try? realm.commitWrite()
                 }, onDisposed: nil)
-                .addDisposableTo(disposeBag)
+                .disposed(by: disposeBag)
         }
     }
     
