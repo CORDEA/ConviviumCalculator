@@ -70,7 +70,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return fmt
     }
     
-    private func calculateCurrentCollectionState() -> [CVarArg] {
+    private func calculateCurrentCollectionState() -> [String] {
         let fmt = getNumberFormatter()
         if let realm = try? Realm() {
             items = realm.objects(ListItem.self)
